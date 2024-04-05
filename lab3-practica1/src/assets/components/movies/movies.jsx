@@ -148,6 +148,7 @@ const Movies = () => {
                     <li key={index}>{title}</li>
                 ))}
             </ul>
+            <h2>Práctica 1 LAB3</h2>
         </div>
     );
 }
