@@ -1,17 +1,26 @@
-//import { useState } from 'preact/hooks'
-//import preactLogo from './assets/preact.svg'
-//import viteLogo from '/vite.svg'
-import './app.css'
+  import React from 'react';
+  import './app.css'
+  import Table from './assets/components/table/Table';
 
-import React from 'react';
-import Movies from './assets/components/movies/movies';
+  const App = () => {
+    const netIncomes = [
+      { brand: 'McDonalds', income: 1291283 },
+      { brand: 'Burger King', income: 1927361 },
+      { brand: 'KFC', income: 1098463 }
+    ];
 
-function App() {
-  return (
-    <div className="App">
-      <Movies />
-    </div>
-  );
-}
+    const totalIncome = netIncomes.reduce((acc, curr) => acc + curr.income, 0);
+    const averageIncome = totalIncome / netIncomes.length;
 
-export default App;
+    return (
+      <div>
+        <h1>LAB3 práctica 2</h1>
+        <h2>Net income table:</h2>
+
+        <Table data={netIncomes} />
+        <p>Average net income: {averageIncome.toFixed(1)}</p>
+      </div>
+    );
+  };
+
+  export default App;
