@@ -19,7 +19,14 @@ const TaskList = (props) => {
 };
 
 TaskList.propTypes = {
-    tasks: PropTypes.array
+    tasks: PropTypes.arrayOf(
+        PropTypes.shape({
+            text: PropTypes.string.isRequired,
+            completed: PropTypes.bool.isRequired,
+        })
+    ).isRequired,
+    markAsCompleted: PropTypes.func.isRequired,
+    removeTask: PropTypes.func.isRequired,
 };
 
 export default TaskList;
