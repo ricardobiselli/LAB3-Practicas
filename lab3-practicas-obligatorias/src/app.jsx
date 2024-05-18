@@ -1,14 +1,39 @@
-import React from 'react';
+import { useState } from 'react';
+import TaskList from './assets/components/taskList/TaskList';
+import NewTask from './assets/components/newTask/NewTask';
 import './app.css';
-import Login from './assets/components/login/login';
 
-function App() {
+const App =() =>{
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = (newTask) => {
+    setTasks([...tasks, { text: newTask, completed: false }]);
+  };
+
+  const markAsCompleted = (taskText) => {
+    setTasks(
+      tasks.map((task) =>
+        task.text === taskText ? { ...task, completed: true } : task
+      )
+    );
+  };
+
+  const removeTask = (taskText) => {
+    setTasks(tasks.filter((task) => task.text !== taskText));
+  };
+
   return (
     <div>
-      <p>LAB 3 - práctica obligatoria 3</p>
-      <Login />
+      <h1>LAB3 practica obligatoria 4</h1>
+      <p>Lista de tareas</p>
+      <NewTask addTask={addTask} />
+      <TaskList
+        tasks={tasks}
+        markAsCompleted={markAsCompleted}
+        removeTask={removeTask}
+      />
     </div>
   );
-}
+};
 
 export default App;
